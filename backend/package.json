@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.2.1",
     "js-cookie": "^3.0.5",
     "json-web-token": "^3.2.0",

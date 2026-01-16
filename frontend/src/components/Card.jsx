@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Card = () => {
+  const [Tasks, setTasks] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3000/tasks/')
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error fetching tasks:', error));
+  }, []);
   return (
     <div className="flex flex-wrap gap-8">
       <div className="group relative bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 w-72">

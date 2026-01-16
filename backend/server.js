@@ -1,9 +1,11 @@
 const  express = require('express')
 require('./Database/mongo')
 const router = require('./routes/taskRoutes')
+const cors = require('cors')
 require('dotenv').config()
 
 const app = express();
+app.use(cors())
 app.use("/tasks",router)
 
 app.get("/", (req, res)=>{
