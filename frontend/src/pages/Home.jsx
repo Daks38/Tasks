@@ -1,8 +1,9 @@
-// src/pages/Home.jsx
-import React from "react";
-
-export default function Home() {
+import React from 'react';
+import Card from '../components/Card'
+import { Link } from 'react-router-dom';
+const Home = () => {
   return (
+    <div>
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <section className="flex-1 flex items-center justify-center text-center px-6">
         <div>
@@ -13,21 +14,23 @@ export default function Home() {
             Organise, consulte et supprime tes tâches comme tu veux.
           </p>
           <div className="space-x-4">
-            <a
-              href="/tâches"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition"
-            >
-              Voir mes tâches
-            </a>
-            <a
-              href="/ajouter"
+            <Link
+              to="/add"
               className="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg shadow hover:bg-gray-300 transition"
             >
               Ajouter une note
-            </a>
+            </Link>
           </div>
         </div>
       </section>  
+      <section className="flex justify-around flex-wrap mt-20 mb-20">
+      <Card/>
+      <Card/>
+      <Card/>
+      </section>
+    </div>
     </div>
   );
-}
+};
+
+export default Home;
