@@ -99,7 +99,7 @@ http://localhost:3000
 Créer un fichier .env dans le dossier server :
 
 PORT=3000
-URI = mongodb://localhost:27017/Bdname
+URI = mongodb://localhost:27017/Bd-name
 
 
 ---
