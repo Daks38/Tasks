@@ -10,18 +10,14 @@ import Detail from "./pages/Detail";
 export default function App() {
   return (
     <div>
-      <nav>
-        <Link to="/">Accueil</Link> |{" "}
-        <Link to="/add">Ajouter</Link> |{" "}
-      </nav>
-<Header />  
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<Add />} />
         <Route path="/details" element={<Detail />} />
       </Routes>
-      <Footer />  
+      <Footer />
     </div>
   );
 }
