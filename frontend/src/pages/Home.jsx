@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-import Card from "../components/Card";
+import Card from "../components/Cards";
 import { Link } from "react-router-dom";
 const Home = () => {
   return (
@@ -23,9 +23,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex justify-around flex-wrap mt-20 mb-20">
-          <Card />
-          <Card />
+        <section className="flex justify-around  gap-14 flex-wrap mt-20 mb-20">
           <Card />
         </section>
       </div>
