@@ -6,6 +6,7 @@ import Footer from "../src/components/Footer";
 import { Routes, Route, Link } from "react-router-dom";
 import Add from "./pages/Add";
 import Detail from "./pages/Detail";
+import Update from "./pages/Update";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<Add />} />
         <Route path="/details/:id" element={<Detail />} />
+        <Route path="/update/:id" element={<Update />} />
       </Routes>
       <Footer />
     </div>
