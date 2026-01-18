@@ -34,11 +34,11 @@ router.post("/", async (req, res) => {
       content: req.body.content,
     });
     if (!req.body.title) {
-      res.status(500).json("Renseignez le champs titre ");
+      res.status(400).json("Renseignez le champs titre ");
     } else if (!req.body.content) {
-      res.status(500).json("Renseignez le champs description ");
+      res.status(400).json("Renseignez le champs description ");
     } else {
-      registed = await newTasks.save();
+       await newTasks.save();
       res.status(200).json({ task: registed, msg: "Tâches créée avec succès" });
     }
   } catch (err) {
@@ -57,7 +57,7 @@ router.put("/:id", async (req, res) => {
         .status(200)
         .json({ task: updateTasks, msg: "Tâches mise à jour avec succès" });
   } catch (err) {
-    res.status(400).json(err.message);
+    res.status(400).json({erreur:err.message});
   }
 });
 //Delete tasks by id
