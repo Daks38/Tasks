@@ -1,6 +1,6 @@
 const  express = require('express')
-require('../Database/mongo')
-const router = require('../routes/taskRoutes')
+require('./Database/mongo')
+const router = require('./routes/taskRoutes')
 const cors = require('cors')
 require('dotenv').config()
 
