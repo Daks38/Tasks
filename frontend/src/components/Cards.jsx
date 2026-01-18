@@ -25,13 +25,9 @@ const Cards = () => {
       {/* Status badge */}
       <div className="flex justify-end">
         <span
-          className={`text-xs sm:text-sm px-3 py-1 rounded-full font-semibold text-white ${
-            task.status === "Terminée"
-              ? "bg-green-600"
-              : "bg-yellow-500"
-          }`}
+          className="text-xs sm:text-sm px-3 py-1 rounded-full font-semibold rounded-2xl bg-green-600 text-white"
         >
-          {task.status}
+          {task.createdAt.slice(0, 10)}
         </span>
       </div>
 
@@ -40,7 +36,7 @@ const Cards = () => {
         {task.title}
       </h3>
 
-      <p className="text-sm sm:text-base text-gray-600 text-center mb-4 line-clamp-3">
+      <p className="text-sm sm:text-base wrap-break-word text-gray-600 text-center mb-4 line-clamp-3">
         {task.content}
       </p>
 
