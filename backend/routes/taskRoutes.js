@@ -2,47 +2,49 @@ const express = require("express");
 const Task = require("../models/Tasks");
 
 const router = express.Router();
-// const app = express()
-
-// router.use(express.json());
 
 //Find all Tasks
 router.get("/", async (req, res) => {
-  const allTasks =  await Task.find();
-  res.status(200).json(allTasks);
+  try {
+    const allTasks = await Task.find();
+    res.status(200).json(allTasks);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 //Find tasks by id
 router.get("/:id", async (req, res) => {
   try {
-    const allTasks = await Task.findById(req.params.id);
-    if (!allTasks) {
-      res.status(500).json({ msg: "Cet id ne corespond à aucune tâches" });
-    } else {
-      res.status(200).json(allTasks);
+    const task = await Task.findById(req.params.id);
+    if (!task) {
+      return res.status(404).json({ msg: "Cet id ne correspond à aucune tâche" });
     }
+    res.status(200).json(task);
   } catch (err) {
-    res.status(400).json(err.message);
+    res.status(400).json({ error: err.message });
   }
 });
 
 //Create Tasks
 router.post("/", async (req, res) => {
   try {
+    if (!req.body.title) {
+      return res.status(400).json("Renseignez le champs titre ");
+    }
+    if (!req.body.content) {
+      return res.status(400).json("Renseignez le champs description ");
+    }
+
     const newTasks = new Task({
       title: req.body.title,
       content: req.body.content,
     });
-    if (!req.body.title) {
-      res.status(400).json("Renseignez le champs titre ");
-    } else if (!req.body.content) {
-      res.status(400).json("Renseignez le champs description ");
-    } else {
-     const registed =  await newTasks.save();
-      res.status(200).json({ task: registed, msg: "Tâches créée avec succès" });
-    }
+
+    const registed = await newTasks.save();
+    res.status(201).json({ task: registed, msg: "Tâche créée avec succès" });
   } catch (err) {
-    res.status(400).json(err.message);
+    res.status(400).json({ error: err.message });
   }
 });
 
@@ -50,27 +52,24 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const updateTasks = await Task.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
+      new: true,
     });
-    
-      res
-        .status(200)
-        .json({ task: updateTasks, msg: "Tâches mise à jour avec succès" });
+    res.status(200).json({ task: updateTasks, msg: "Tâche mise à jour avec succès" });
   } catch (err) {
-    res.status(400).json({erreur:err.message});
+    res.status(400).json({ error: err.message });
   }
 });
+
 //Delete tasks by id
 router.delete("/:id", async (req, res) => {
   try {
-    const delTask  = await Task.findByIdAndDelete(req.params.id);
+    const delTask = await Task.findByIdAndDelete(req.params.id);
     if (!delTask) {
-    res.status(500).json({ msg: "Cet id n'existe plus" });
-    }else{
-    res.status(200).json({ msg: "Tâche suprimée avec succès." });
+      return res.status(404).json({ msg: "Cet id n'existe plus" });
     }
+    res.status(200).json({ msg: "Tâche supprimée avec succès." });
   } catch (err) {
-    res.status(400).json(err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 
