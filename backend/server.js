@@ -7,7 +7,7 @@ require('dotenv').config()
 const app = express();
 app.use(cors())
 app.use(express.json()) 
-app.use("/tasks",router)
+app.use("/tasks-phi-nine.vercel.app",router)
 
 app.get("/", (req, res)=>{
     res.send("Tout fonctionne bien ici")
