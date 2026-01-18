@@ -20,7 +20,7 @@ const Detail = () => {
       })
         .then((res) => {
           if (!res.ok) throw new Error("Erreur lors de la suppression");
-          navigate("/Home");
+          navigate("/");
         })
         .catch((err) => console.error(err));
     }

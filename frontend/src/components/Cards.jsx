@@ -16,20 +16,44 @@ const Cards = () => {
   }, []);
 
   return (
-    <div className="flex gap-14">
-      {tasks.map(task =>(<div key={task.id}
-      className="w-[100px] hover:scale-[1.1] h-[125px] sm:w-[200px] sm:h-[225px] gap-1 md:gap-4 flex flex-col  px-2 py-3 justify-center items-center bg-white  bg-opacity-30 rounded-[25px]">
+   <div className="flex flex-wrap gap-10 justify-center">
+  {tasks.map((task) => (
+    <div
+      key={task._id}
+      className="w-[250px] h-auto bg-gradient-to-br from-white to-gray-100 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl p-6 flex flex-col justify-between"
+    >
+      {/* Status badge */}
       <div className="flex justify-end">
-        <span className="text-sm text-center rounded-2xl font-regular bg-green-600 p-1 text-[#ffffff] sm:text-sm  ">{task.status}</span>
+        <span
+          className={`text-xs sm:text-sm px-3 py-1 rounded-full font-semibold text-white ${
+            task.status === "Terminée"
+              ? "bg-green-600"
+              : "bg-yellow-500"
+          }`}
+        >
+          {task.status}
+        </span>
       </div>
-      <h3 className="text-base capitalize  font-black text-black sm:text-[28px]">{task.title}</h3>
-      <p className="text-sm text-center font-regular  text-[#A4A4A5] sm:text-xl  ">{task.content}</p>
-      <Link to={`/details/${task._id}`} className="bg-blue-500 text-gray-800 px-6 py-3 rounded-sm shadow hover:bg-blue-900 transition"
-              >
-                Voir plus
-              </Link>
-    </div>))}
+
+  
+      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mt-3 mb-2 text-center">
+        {task.title}
+      </h3>
+
+      <p className="text-sm sm:text-base text-gray-600 text-center mb-4 line-clamp-3">
+        {task.content}
+      </p>
+
+      <Link
+        to={`/details/${task._id}`}
+        className="mt-auto bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 transition-colors duration-300 text-center"
+      >
+        Voir plus
+      </Link>
     </div>
+  ))}
+</div>
+
   );
 };
 

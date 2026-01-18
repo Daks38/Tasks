@@ -17,7 +17,7 @@ const Add = () => {
         return res.json();
       })
       .then(() => {
-        navigate("/Home");
+        navigate("/");
       })
       .catch((err) => console.error(err));
   };
