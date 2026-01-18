@@ -4,7 +4,7 @@ const Task = require("../models/Tasks");
 const router = express.Router();
 // const app = express()
 
-router.use(express.json());
+// router.use(express.json());
 
 //Find all Tasks
 router.get("/", async (req, res) => {
@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
     } else if (!req.body.content) {
       res.status(400).json("Renseignez le champs description ");
     } else {
-       await newTasks.save();
+     const registed =  await newTasks.save();
       res.status(200).json({ task: registed, msg: "Tâches créée avec succès" });
     }
   } catch (err) {
