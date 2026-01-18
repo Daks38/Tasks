@@ -6,11 +6,11 @@ const TaskSchema = new mongoose.Schema(
 
     content: { type: String, required: true },
 
-    status: {
-      type: String,
-      enum: ["En cours", "Terminée"],
-      default: "En cours",
-    },
+    // status: {
+    //   type: String,
+    //   enum: ["En cours", "Terminée"],
+    //   default: "En cours",
+    // },
   },
   { timestamps: true }
 );
