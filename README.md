@@ -23,7 +23,7 @@ Frontend :
 - React
 - JavaScript 
 - HTML5 / CSS3
-- Axios
+- Fetch
 
 Backend :
 
