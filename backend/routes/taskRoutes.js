@@ -56,7 +56,7 @@ router.put("/:id", async (req, res) => {
     });
     res.status(200).json({ task: updateTasks, msg: "Tâche mise à jour avec succès" });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 });
 
