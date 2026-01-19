@@ -24,7 +24,7 @@ const Update = () => {
     e.preventDefault();
     const updatedTask = { title, content };
 
-    fetch(`https://tasks-sigma-ten.vercel.app/tasks${id}`, {
+    fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTask),
