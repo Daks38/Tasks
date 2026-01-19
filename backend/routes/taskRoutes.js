@@ -6,7 +6,8 @@ const router = express.Router();
 //Find all Tasks
 router.get("/", async (req, res) => {
   try {
-    const allTasks = await Task.find();
+    const allTasks = await Task.find().sort({ createdAt: -1 });
+;
     res.status(200).json(allTasks);
   } catch (err) {
     res.status(500).json({ error: err.message });
