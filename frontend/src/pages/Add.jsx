@@ -7,7 +7,7 @@ const Add = () => {
   const sendSubmit = (e) => {
     e.preventDefault();
     const newTask = { title, content };
-    fetch("http://localhost:3000/tasks", {
+    fetch("https://tasks-sigma-ten.vercel.app/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),

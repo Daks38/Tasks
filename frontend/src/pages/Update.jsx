@@ -8,7 +8,7 @@ const Update = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tasks/${id}`)
+    fetch(`https://tasks-sigma-ten.vercel.app/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Erreur lors du chargement");
         return res.json();
@@ -24,7 +24,7 @@ const Update = () => {
     e.preventDefault();
     const updatedTask = { title, content };
 
-    fetch(`http://localhost:3000/tasks/${id}`, {
+    fetch(`https://tasks-sigma-ten.vercel.app/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTask),

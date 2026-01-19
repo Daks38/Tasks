@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Cards = () => {
   const [tasks, setTasks] = useState([]);
   const Tall = () => {
-    fetch("http://localhost:3000/tasks/")
+    fetch("https://tasks-sigma-ten.vercel.app/tasks")
       .then((response) => {
         if (!response.ok) throw new Error("Erreur serveur");
        return response.json();

@@ -7,7 +7,7 @@ const Detail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tasks/${id}`)
+    fetch(`https://tasks-sigma-ten.vercel.app/${id}`)
       .then((res) => res.json())
       .then((data) => setTask(data))
       .catch((err) => console.error(err));
@@ -15,7 +15,7 @@ const Detail = () => {
 
   const handleDelete = () => {
     if (window.confirm("Voulez-vous vraiment supprimer cette tâche ?")) {
-      fetch(`http://localhost:3000/tasks/${id}`, {
+      fetch(`https://tasks-sigma-ten.vercel.app/${id}`, {
         method: "DELETE",
       })
         .then((res) => {
