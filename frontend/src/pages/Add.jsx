@@ -6,7 +6,7 @@ const Add = () => {
   const [content, setContent] = useState("");
   const sendSubmit = (e) => {
     e.preventDefault();
-    const newTask = { title, content };
+    const newTask = { title, content, ownerId: localStorage.getItem("userId") };
     fetch("https://tasks-sigma-ten.vercel.app/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,6 +21,9 @@ const Add = () => {
       })
       .catch((err) => console.error(err));
   };
+  if (!localStorage.getItem("userId")) {
+  localStorage.setItem("userId", crypto.randomUUID());
+}
   return (
     <div>
       <main class="container mx-auto p-4 mt-12 bg-white flex flex-col items-center justify-center text-gray-700">

@@ -17,6 +17,9 @@ const Detail = () => {
     if (window.confirm("Voulez-vous vraiment supprimer cette tâche ?")) {
       fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`, {
         method: "DELETE",
+        headers: {
+          "x-user-id": localStorage.getItem("userId"),
+        },
       })
         .then((res) => {
           if (!res.ok) throw new Error("Erreur lors de la suppression");

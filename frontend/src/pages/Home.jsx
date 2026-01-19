@@ -2,6 +2,7 @@
 import Card from "../components/Cards";
 import { Link } from "react-router-dom";
 const Home = () => {
+  
   return (
     <div>
       <div className="min-h-screen bg-gray-100 flex flex-col">
