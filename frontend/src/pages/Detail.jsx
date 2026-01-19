@@ -7,7 +7,7 @@ const Detail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`)
+    fetch(`https://tasks-sigma-ten.vercel.app/tasks /${id}`)
       .then((res) => res.json())
       .then((data) => setTask(data))
       .catch((err) => console.error(err));
