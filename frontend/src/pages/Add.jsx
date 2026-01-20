@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Add = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  if (!localStorage.getItem("userId")) {
+    localStorage.setItem("userId", crypto.randomUUID());
+  }
   const sendSubmit = (e) => {
     e.preventDefault();
     const newTask = { title, content, ownerId: localStorage.getItem("userId") };
@@ -21,9 +24,6 @@ const Add = () => {
       })
       .catch((err) => console.error(err));
   };
-  if (!localStorage.getItem("userId")) {
-  localStorage.setItem("userId", crypto.randomUUID());
-}
   return (
     <div>
       <main class="container mx-auto p-4 mt-12 bg-white flex flex-col items-center justify-center text-gray-700">
@@ -46,15 +46,15 @@ const Add = () => {
               type="text"
               placeholder="Description"
             />
-         
-          <div class="flex items-center">
-            <button
-              class="ml-auto w-1/2 bg-gray-800 text-white p-2 rounded font-semibold hover:bg-gray-900"
-              type="submit"
-            >
-              Ajouter
-            </button> 
-          </div>
+
+            <div class="flex items-center">
+              <button
+                class="ml-auto w-1/2 bg-gray-800 text-white p-2 rounded font-semibold hover:bg-gray-900"
+                type="submit"
+              >
+                Ajouter
+              </button>
+            </div>
           </form>
         </div>
       </main>
