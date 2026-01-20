@@ -14,23 +14,36 @@ const Detail = () => {
       .catch((err) => console.error(err));
   }, [id]);
 
-  const handleDelete = () => {
-    if (window.confirm("Voulez-vous vraiment supprimer cette tâche ?")) {
-      fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`, {
-        method: "DELETE",
-        headers: {
-          "x-user-id": localStorage.getItem("userId"),
-        },
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error("Impossible de supprimer la tâche");
-          navigate("/");
-        })
-        .catch((err) => console.error(err));
-    }
-  };
+const handleDelete = () => {
+  if (window.confirm("Voulez-vous vraiment supprimer cette tâche ?")) {
+    fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-user-id": localStorage.getItem("userId"),
+      },
+    })
+      .then(async (res) => {
+        const data = await res.json(); // 👈 récupérer JSON
 
-  if (!task) return <p>Chargement...</p>;
+        if (!res.ok) {
+          // Erreur côté backend
+          throw new Error(data.message || "Impossible de supprimer la tâche");
+        }
+
+        // Message backend (succès)
+        console.log("Succès:", data.message);
+        alert(data.message);
+
+        // Redirection
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error("Erreur:", err.message);
+        alert(err.message); // affiche l’erreur
+      });
+  }
+};
+
 
   return (
     <div>
