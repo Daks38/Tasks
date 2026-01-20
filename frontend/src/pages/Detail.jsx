@@ -22,7 +22,7 @@ const Detail = () => {
         },
       })
         .then((res) => {
-          if (!res.ok) console.log(res.msg);
+          if (!res.ok) console.log(res);
           // throw new Error("Erreur lors de la suppression")
           navigate("/");
         })
