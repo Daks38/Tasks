@@ -27,19 +27,19 @@ const handleDelete = () => {
 
         if (!res.ok) {
           // Erreur côté backend
-          throw new Error(data.message || "Impossible de supprimer la tâche");
+          throw new Error(data.msg || "Impossible de supprimer la tâche");
         }
 
         // Message backend (succès)
-        console.log("Succès:", data.message);
-        alert(data.message);
+        console.log("Succès:", data.msg);
+        alert(data.msg);
 
         // Redirection
         navigate("/");
       })
       .catch((err) => {
-        console.error("Erreur:", err.message);
-        alert(err.message); // affiche l’erreur
+        console.error("Erreur:", err.msg);
+        alert(err.msg); // affiche l’erreur
       });
   }
 };
