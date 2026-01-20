@@ -79,7 +79,7 @@ const Detail = () => {
             )}
           </svg>
           <span className="font-medium">
-            {msg.type === "success" ? "Succès !" : "Erreur !"}
+            {msg.type === "success" ? "Tâche supprimée avec succès !" : "Erreur !"}
           </span>
           <span className="ml-2">{msg.text}</span>
         </div>
