@@ -33,9 +33,9 @@ const handleDelete = () => {
         }
 
 
-        console.log("Succès :", data.msg);
+        console.log("Succès :", data.message);
         // alert(data.msg);
-        setMsg(data.msg);
+        setMsg(data.message);
 
        setTimeout(() => navigate("/"), 2000);
       })
