@@ -9,7 +9,11 @@ const Detail = () => {
   useEffect(() => {
     fetch(`https://tasks-sigma-ten.vercel.app/tasks/${id}`)
       .then((res) => res.json())
-      .then((data) => setTask(data))
+      .then((data) => {
+        setTask(data)
+        console.log(data);
+        
+      })
       .catch((err) => console.error(err));
   }, [id]);
 
@@ -22,8 +26,7 @@ const Detail = () => {
         },
       })
         .then((res) => {
-          if (!res.ok) console.log(res);
-          // throw new Error("Erreur lors de la suppression")
+          if (!res.ok) throw new Error("Erreur lors de la suppression");
           navigate("/");
         })
         .catch((err) => console.error(err));
