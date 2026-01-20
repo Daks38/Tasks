@@ -23,24 +23,23 @@ const handleDelete = () => {
       },
     })
       .then(async (res) => {
-        const data = await res.json(); // 👈 on lit le JSON
+        const data = await res.json(); 
 
         if (!res.ok) {
-          // backend a renvoyé une erreur (404, 403…)
+
           const message = data.msg || data.error || "Erreur inconnue";
           throw new Error(message);
         }
 
-        // ici succès
+
         console.log("Succès :", data.msg);
         alert(data.msg);
 
-        // navigation
         navigate("/");
       })
       .catch((err) => {
         console.error("Erreur:", err.message);
-        alert(err.message); // on affiche le message d’erreur
+        alert(err.message); 
       });
   }
 };
