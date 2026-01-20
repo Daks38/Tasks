@@ -23,26 +23,28 @@ const handleDelete = () => {
       },
     })
       .then(async (res) => {
-        const data = await res.json(); // 👈 récupérer JSON
+        const data = await res.json(); // 👈 on lit le JSON
 
         if (!res.ok) {
-          // Erreur côté backend
-          throw new Error(data.msg || "Impossible de supprimer la tâche");
+          // backend a renvoyé une erreur (404, 403…)
+          const message = data.msg || data.error || "Erreur inconnue";
+          throw new Error(message);
         }
 
-        // Message backend (succès)
-        console.log("Succès:", data.msg);
+        // ici succès
+        console.log("Succès :", data.msg);
         alert(data.msg);
 
-        // Redirection
+        // navigation
         navigate("/");
       })
       .catch((err) => {
-        console.error("Erreur:", err.msg);
-        alert(err.error); // affiche l’erreur
+        console.error("Erreur:", err.message);
+        alert(err.message); // on affiche le message d’erreur
       });
   }
 };
+
 
 
   if (!task) return <p>Chargement...</p>;
