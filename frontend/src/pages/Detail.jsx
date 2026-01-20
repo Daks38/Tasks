@@ -22,7 +22,8 @@ const Detail = () => {
         },
       })
         .then((res) => {
-          if (!res.ok) throw new Error("Erreur lors de la suppression");
+          if (!res.ok) console.log(res.msg);
+          // throw new Error("Erreur lors de la suppression")
           navigate("/");
         })
         .catch((err) => console.error(err));

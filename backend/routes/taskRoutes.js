@@ -77,7 +77,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(404).json({ msg: "Cet id n'existe plus" });
     }
     if (delTask.ownerId !== userId) {
-      return res.status(403).json({ msg: "Action interdite" });
+      return res.status(403).json({ msg: "Impossible de supprimer cette tâche" });
     }
     await delTask.deleteOne();
     res.status(200).json({ msg: "Tâche supprimée avec succès." });
