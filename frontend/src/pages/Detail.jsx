@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 const Detail = () => {
   const { id } = useParams();
   const [task, setTask] = useState(null);
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,13 +34,15 @@ const handleDelete = () => {
 
 
         console.log("Succès :", data.msg);
-        alert(data.msg);
+        // alert(data.msg);
+        setMsg(data.msg);
 
-        navigate("/");
+       setTimeout(() => navigate("/"), 2000);
       })
       .catch((err) => {
         console.error("Erreur:", err.message);
-        alert(err.message); 
+        setMsg(err.message);
+        // alert(err.message); 
       });
   }
 };
@@ -50,6 +53,7 @@ const handleDelete = () => {
 
   return (
     <div>
+    <span>{msg}</span>
       <section className="bg-white p-2 md:p-6 rounded-2xl border border-gray-300 max-w-xl mx-auto mt-[15vh]">
         <span className="p-2 rounded-2xl bg-green-700 text-white">
           {task.createdAt.slice(0, 10)}
