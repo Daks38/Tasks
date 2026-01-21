@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 const Detail = () => {
   const { id } = useParams();
   const [task, setTask] = useState(null);
-  const [msg, setMsg] = useState(null); // msg devient un objet { type, text }
+  const [msg, setMsg] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Detail = () => {
 
   return (
     <div>
-      {/* Message stylé */}
+
       {msg && (
         <div
           className={`flex items-center p-4 mb-4 text-sm rounded-lg border transition-opacity duration-500 ease-in-out
@@ -85,7 +85,7 @@ const Detail = () => {
         </div>
       )}
 
-      {/* Bloc de tâche */}
+
       <section className="bg-white p-2 md:p-6 rounded-2xl border border-gray-300 max-w-xl mx-auto mt-[15vh] shadow-lg hover:shadow-xl transition-shadow">
         <span className="p-2 rounded-2xl bg-green-700 text-white">
           {task.createdAt.slice(0, 10)}
